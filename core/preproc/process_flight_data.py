@@ -105,8 +105,7 @@ outdate=(tmpdate + datetime.timedelta(hours=1)).strftime('%Y-%m-%d %H')
 #daily=pd.date_range(sdate,outdate,freq='D')
 hourly=pd.date_range(sdate,outdate,freq='H')
 #print(hourly)
-code=['AAT','ACX']   #,'AEB','AHJ','AKU','AQG','AVA','AXF','BAR','BAV','BFJ','BHY','BPE','BPL','BPX','BSD','BZX','CAN','CDE','CGD','CGO','CGQ','CHG','CIF','CIH','CKG','CSX','CTU','CWJ','CZX','DAT','DAX','DBC','DCY','DDG','DIG','DLC','DLU','DNH','DOY','DQA','DSN','DTU','DYG','EJN','ENH','ENY','ERL','FOC','FUG','FUO','FYJ','FYN','GMQ','GOQ','GXH','GYS','GYU','HAK','HBQ','HCJ','HDG','HEK','HET','HFE','HGH','HIA','HJJ','HLD','HLH','HMI','HNY','HPG','HRB','HSN','HTN','HTT','HUO','HUZ','HXD','HYN','HZG','HZH','INC','IQM','IQN','JDZ','JGD','JGN','JGS','JHG','JIC','JIQ','JJN','JMJ','JMU','JNG','JNZ','JSJ','JUH','JUZ','JXA','JZH','KCA','KGT','KHG','KHN','KJH','KJI','KMG','KOW','KRL','KRY','KWE','KWL','LCX','LDS','LFQ','LHW','LJG','LLB','LLV','LNJ','LNL','LPF','LUM','LXA','LYA','LYG', \
-#'LYI','LZH','LZO','LZY','MDG','MIG','MXZ','NAO','NAY','NBS','NDG','NGB','NGQ','NKG','NLH','NLT','NNG','NNY','NTG','NZH','NZL','OHE','PEK','PKX','PVG','PZI','QSZ','RHT','RIZ','RKZ','RLK','RQA','SHA','SHE','SJW','SQD','SQJ','SWA','SYM','SYX','SZX','TAO','TCG','TCZ','TEN','TGO','THQ','TLQ','TNA','TNH','TSN','TVS','TWC','TXN','TYC','TYN','UCB','URC','UYN','WDS','WEF','WEH','WGN','WMT','WNH','WNZ','WUA','WUH','WUS','WUT','WUX','WUZ','WXN','XAI','XFN','XIC','XIL','XIY','XMN','XNN','XUZ','YBP','YCU','YIC','YIE','YIH','YIN','YIW','YKH','YNJ','YNT','YNZ','YSQ','YTY','YUN','YUS','YYA','YZY','ZAT','ZHA','ZHY','ZQZ','ZUH','ZYI']
+code=['AAT','ACX','AEB','AHJ','AKU','AQG','AVA','AXF','BAR','BAV','BFJ','BHY','BPE','BPL','BPX','BSD','BZX','CAN','CDE','CGD','CGO','CGQ','CHG','CIF','CIH','CKG','CSX','CTU','CWJ','CZX','DAT','DAX','DBC','DCY','DDG','DIG','DLC','DLU','DNH','DOY','DQA','DSN','DTU','DYG','EJN','ENH','ENY','ERL','FOC','FUG','FUO','FYJ','FYN','GMQ','GOQ','GXH','GYS','GYU','HAK','HBQ','HCJ','HDG','HEK','HET','HFE','HGH','HIA','HJJ','HLD','HLH','HMI','HNY','HPG','HRB','HSN','HTN','HTT','HUO','HUZ','HXD','HYN','HZG','HZH','INC','IQM','IQN','JDZ','JGD','JGN','JGS','JHG','JIC','JIQ','JJN','JMJ','JMU','JNG','JNZ','JSJ','JUH','JUZ','JXA','JZH','KCA','KGT','KHG','KHN','KJH','KJI','KMG','KOW','KRL','KRY','KWE','KWL','LCX','LDS','LFQ','LHW','LJG','LLB','LLV','LNJ','LNL','LPF','LUM','LXA','LYA','LYG','LYI','LZH','LZO','LZY','MDG','MIG','MXZ','NAO','NAY','NBS','NDG','NGB','NGQ','NKG','NLH','NLT','NNG','NNY','NTG','NZH','NZL','OHE','PEK','PKX','PVG','PZI','QSZ','RHT','RIZ','RKZ','RLK','RQA','SHA','SHE','SJW','SQD','SQJ','SWA','SYM','SYX','SZX','TAO','TCG','TCZ','TEN','TGO','THQ','TLQ','TNA','TNH','TSN','TVS','TWC','TXN','TYC','TYN','UCB','URC','UYN','WDS','WEF','WEH','WGN','WMT','WNH','WNZ','WUA','WUH','WUS','WUT','WUX','WUZ','WXN','XAI','XFN','XIC','XIL','XIY','XMN','XNN','XUZ','YBP','YCU','YIC','YIE','YIH','YIN','YIW','YKH','YNJ','YNT','YNZ','YSQ','YTY','YUN','YUS','YYA','YZY','ZAT','ZHA','ZHY','ZQZ','ZUH','ZYI']
 list=[]
 for n in code:
 	'''
@@ -137,20 +136,24 @@ for n in code:
 		con2=departdata['time']< ehour
 		con3=arrivedata['time']>=shour
 		con4=arrivedata['time']< ehour
-		#dlist.append(n)
-		#alist.append(n)
 		dlist.append(departdata[con1&con2].airportcode.tolist().count(n))
 		alist.append(arrivedata[con3&con4].airportcode.tolist().count(n))
 
 	newlist = [x + y for x, y in zip(dlist, alist)]
 	numtol = sum(newlist)
-	li = [x/numtol for x in newlist]
+	if numtol == 0:
+		li = [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	else:
+		li = [x/numtol for x in newlist]
+	#time zone shift
+	li=np.roll(li, -8).tolist()
 	li.append(n)
 	li=np.array(li)
 	list.append(li)
-print(list)
+#print(list)
 col=['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','IATA']
-df =pd.DataFrame(columns=col,data=li)
-print(df)
-df.to_csv('endtime.csv',mode='w',encoding='utf-8-sig' ,sep=',',index=False) 
-
+#df =pd.DataFrame(columns=col,data=li)
+df =pd.DataFrame(data=list)
+df.columns = col
+df.to_csv('../../input/timeprofile.csv',mode='w',encoding='utf-8-sig' ,sep=',',index=False) 
+print('Successful.')

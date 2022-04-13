@@ -11,4 +11,4 @@ data3['IATA']=data1['IATA']
 #print(data3)
 data3.to_csv('../../output/allemis.csv',mode='w',encoding='utf-8-sig' ,sep=',',index=False)
 
-#print(data3['airportcode'])
+print('Successful.')

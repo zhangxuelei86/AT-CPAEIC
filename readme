@@ -1,0 +1,63 @@
+tree cae
+├── core
+│   ├── calemis
+│   │   ├── calarrive.exe
+│   │   ├── calarrive.f90
+│   │   ├── caldepart.exe
+│   │   ├── caldepart.f90
+│   │   └── combine_emis.py
+│   ├── getdata
+│   │   └── get_flight_data.py
+│   ├── intersect
+│   │   ├── CMAQ_27KM.dbf
+│   │   ├── CMAQ_27KM.prj
+│   │   ├── CMAQ_27KM.shp
+│   │   ├── CMAQ_27KM.shx
+│   │   ├── d01
+│   │   │   └── emis.csv
+│   │   ├── EMIS_CMAQ_27KM.cpg
+│   │   ├── EMIS_CMAQ_27KM.dbf
+│   │   ├── EMIS_CMAQ_27KM.prj
+│   │   ├── EMIS_CMAQ_27KM.shp
+│   │   ├── EMIS_CMAQ_27KM.shx
+│   │   ├── emission2modelgrid.py
+│   │   ├── geo_em.d01.nc -> ../../input/geo_em.d01.nc
+│   │   ├── GRIDCRO2D_d01 -> ../../input/GRIDCRO2D_d01
+│   │   └── GRIDDOT2D_d01 -> ../../input/GRIDDOT2D_d01
+│   ├── preproc
+│   │   └── process_flight_data.py
+│   └── writenc
+│       └── area_emis_process.py
+├── input
+│   ├── airshp
+│   │   ├── airportiatashape.cpg
+│   │   ├── airportiatashape.dbf
+│   │   ├── airportiatashape.prj
+│   │   ├── airportiatashape.sbn
+│   │   ├── airportiatashape.sbx
+│   │   ├── airportiatashape.shp
+│   │   └── airportiatashape.shx
+│   ├── engine.csv
+│   ├── geo_em.d01.nc
+│   ├── GRIDCRO2D_d01
+│   ├── GRIDDOT2D_d01
+│   ├── inp.csv
+│   ├── jixing.csv
+│   ├── pd.csv
+│   ├── pd.csv.bak
+│   ├── speciate_cb06_ae6.csv
+│   └── timeprofile.csv
+├── output
+│   ├── allemis.csv
+│   ├── ARarea.nc
+│   └── tmp
+│       ├── aemis.csv
+│       ├── demis.csv
+│       ├── out_arrivedata.csv
+│       └── out_departdata.csv
+├── readme
+├── requirements.txt
+└── Run_AT-CPAEIC.sh
+
+11 directories, 48 files
+
