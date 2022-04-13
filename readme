@@ -49,7 +49,7 @@ tree cae
 │   └── timeprofile.csv
 ├── output
 │   ├── allemis.csv
-│   ├── ARarea.nc
+│   ├── ARarea.nc    a demo file need to be unzipped from ARarea.nc.zip due to the file size limitation of 25 MB
 │   └── tmp
 │       ├── aemis.csv
 │       ├── demis.csv
